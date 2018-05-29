@@ -1,14 +1,20 @@
 import urllib.request, json
+from jsonserial import jsonobj
 
 if __name__ == '__main__':
     url = "http://xxxx/xxxx" 
     method = "POST"
     headers = {"Content-Type" : "application/json"}
 
-    # PythonオブジェクトをJSONに変換する
-    obj = {"xxx" : "xxxx", 123 : 123} 
-    json_data = json.dumps(obj).encode("utf-8")
+    obj = jsonobj.JsonObj()
+    obj.name = "Onur"
+    obj.age = 35
+    obj.dog = jsonobj.JsonObj()
+    obj.dog.name = "Apollo"
 
+    print(obj.toJSON())
+    json_data = json.dumps(obj.toJSON()).encode("utf-8")
+    print(json_data)
     # httpリクエストを準備してPOST
     request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
     with urllib.request.urlopen(request) as response:
