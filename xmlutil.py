@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 class XmlUtil:
     def __init__ (self, filePath):
         self.filePath = filePath
