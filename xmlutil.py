@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 class XmlUtil:
-    def readXml(filePath):
+    def __init__ (self, filePath):
+        self.filePath = filePath
+
+    def readXml(self):
         from xml.etree import ElementTree
-        tree = ElementTree.parse(filePath)    # xmlファイルを読み込む
+        tree = ElementTree.parse(self.filePath)    # xmlファイルを読み込む
         root = tree.getroot()          # ルートを取得する
         print(root.tag)                # fruit
 
-    readXml("sample.xml")
+xml_util = XmlUtil("sample.xml")
+xml_util.readXml()
